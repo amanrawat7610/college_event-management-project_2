@@ -56,7 +56,7 @@ app.secret_key = "college_event_final_perfect_version"
 
 
 
-basedir = os.path.abspath(os.path.dirname(__name__))
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 
