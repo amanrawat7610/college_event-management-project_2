@@ -1,7 +1,0 @@
-items=("apple","graps","banana","papaya")
-print(len(items))
-print(items.index("banana"))
-print(items[1])
-print(items.count("graps"))
-list_0=list(items)
-print(list_0)
