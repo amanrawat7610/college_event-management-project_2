@@ -1,0 +1,771 @@
+/* 1. GLOBAL STYLES */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-image: url('/static/new.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: #2d3748;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    filter: brightness(1.1);
+    transition: background-color 0.3s ease, filter 0.3s ease;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #0f1419;
+    filter: brightness(0.95);
+}
+
+body.dark-mode::before {
+    filter: blur(6px) brightness(0.8);
+}
+
+body.dark-mode::after {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .navbar-custom {
+    background: rgba(15, 20, 25, 0.98);
+    border-bottom-color: #1e88e5;
+}
+
+body.dark-mode .navbar-custom a {
+    color: #b0bec5;
+}
+
+body.dark-mode .navbar-custom a:hover,
+body.dark-mode .navbar-custom a.active {
+    background: rgba(30, 136, 229, 0.6);
+    color: #e3f2fd;
+}
+
+body.dark-mode .form-card {
+    background: #1a1f2e;
+    color: #e0e0e0;
+    border-top-color: #1e88e5;
+}
+
+body.dark-mode .form-card h2,
+body.dark-mode .form-card h3,
+body.dark-mode .form-card label {
+    color: #e0e0e0;
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="password"],
+body.dark-mode input[type="date"],
+body.dark-mode textarea,
+body.dark-mode select {
+    background: #2a3340;
+    color: #e0e0e0;
+    border-color: #404a55;
+}
+
+body.dark-mode button {
+    background: #1e88e5;
+    color: white;
+}
+
+body.dark-mode .sidebar {
+    background: rgba(15, 20, 25, 0.99);
+    border-right-color: #1e88e5;
+}
+
+body.dark-mode .sidebar a {
+    color: #b0bec5;
+}
+
+body.dark-mode .sidebar a:hover {
+    color: #1e88e5;
+    background: rgba(30, 136, 229, 0.15);
+    border-left-color: #1e88e5;
+}
+
+body.dark-mode .profile-img {
+    border-color: #1e88e5;
+}
+
+body.dark-mode table {
+    background: #1a1f2e;
+    color: #e0e0e0;
+}
+
+body.dark-mode table thead {
+    background: #2a3340;
+}
+
+body.dark-mode table tbody tr {
+    border-color: #404a55;
+}
+
+body.dark-mode table tbody tr:hover {
+    background: #262d3b;
+}
+
+body.dark-mode .banner-announcement {
+    background-color: rgba(20, 25, 35, 0.9);
+}
+
+/* Dark Mode - Override gradient backgrounds */
+body.dark-mode {
+    background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%) !important;
+}
+
+/* Dark Mode for login/signup/forgot_password pages (purple theme) */
+body.dark-mode .login-card,
+body.dark-mode .signup-card,
+body.dark-mode .form-card {
+    background: rgba(26, 32, 44, 0.95) !important;
+    color: #e0e0e0 !important;
+    border-top-color: #667eea !important;
+}
+
+body.dark-mode .login-container,
+body.dark-mode .signup-container,
+body.dark-mode .forgot-container {
+    background: transparent !important;
+}
+
+/* Dark Mode - Form inputs */
+body.dark-mode input[type="text"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="password"],
+body.dark-mode textarea {
+    background: #1a1f2e !important;
+    color: #e0e0e0 !important;
+    border-color: #404a55 !important;
+}
+
+body.dark-mode input::placeholder {
+    color: #90a4ae !important;
+}
+
+/* Dark Mode - Buttons */
+body.dark-mode .btn-login,
+body.dark-mode .btn-submit,
+body.dark-mode .btn-register {
+    background: #667eea !important;
+    color: white !important;
+}
+
+body.dark-mode .btn-login:hover,
+body.dark-mode .btn-submit:hover,
+body.dark-mode .btn-register:hover {
+    background: #5568d3 !important;
+}
+
+/* Dark Mode - Links */
+body.dark-mode .links a,
+body.dark-mode .back-link a {
+    color: #64b5f6 !important;
+}
+
+body.dark-mode .msg {
+    background: #1a1f2e !important;
+    color: #e0e0e0 !important;
+    border-color: #404a55 !important;
+}
+
+/* Dark Mode - Gallery items */
+body.dark-mode .gallery-item {
+    background: #1a1f2e !important;
+}
+
+body.dark-mode .gallery-overlay {
+    background: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Dark Mode - Dashboard specific */
+body.dark-mode .dashboard-content {
+    background: transparent !important;
+}
+
+body.dark-mode .stats-card {
+    background: #1a1f2e !important;
+    color: #e0e0e0 !important;
+    border-top-color: #1e88e5 !important;
+}
+
+body.dark-mode .welcome-card {
+    background: rgba(26, 32, 44, 0.8) !important;
+    color: #e0e0e0 !important;
+}
+
+/* Dark Mode - Logout button styling */
+body.dark-mode .logout-btn {
+    background: #667eea !important;
+    color: white !important;
+    border-color: #667eea !important;
+}
+
+body.dark-mode .logout-btn:hover {
+    background: #5568d3 !important;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/static/new.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: blur(6px);
+    z-index: -2;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+    z-index: -1;
+}
+
+/* 2. BANNER ANNOUNCEMENT */
+.banner-announcement {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 1000;
+    border-bottom: 2px solid red;
+}
+
+.scrolling-text {
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    padding: 5px 0;
+    white-space: nowrap;
+    animation: scrollLeft 8s linear infinite;
+    display: inline-block;
+}
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100vw);
+    }
+}
+
+/* 3. NAVBAR */
+.navbar-custom {
+    background: rgba(45, 55, 80, 0.92);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+    border-bottom: 3px solid #5a9fd4;
+}
+
+.navbar-custom a {
+    color: #e2e8f0;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.navbar-custom a:hover, .navbar-custom a.active {
+    background: rgba(90, 159, 212, 0.8);
+    color: white;
+    box-shadow: 0 2px 8px rgba(90, 159, 212, 0.4);
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    background: none;
+    border: 2px solid #5a9fd4;
+    color: #7db3e0;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.dark-mode-toggle:hover {
+    background: rgba(90, 159, 212, 0.3);
+    border-color: #fff;
+    transform: scale(1.1);
+}
+
+/* Dark Mode Toggle - Purple theme (login/register/forgot_password) */
+.navbar-custom:has(.dark-mode-toggle) {
+    --accent-color: #667eea;
+}
+
+/* Dynamically style toggle based on page accent color */
+body:not(.dark-mode) .navbar-custom .dark-mode-toggle {
+    border-color: #667eea;
+    color: #667eea;
+}
+
+body:not(.dark-mode) .navbar-custom .dark-mode-toggle:hover {
+    background: rgba(102, 126, 234, 0.2);
+}
+
+/* Dark mode toggle styling in dark mode */
+body.dark-mode .dark-mode-toggle {
+    border-color: #667eea;
+    color: #9fa8da;
+    background: rgba(102, 126, 234, 0.15);
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+    border-color: #fff;
+    background: rgba(102, 126, 234, 0.3);
+}
+
+/* 3. SIDEBAR */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -285px; /* Default hidden */
+    width: 280px;
+    height: 100vh;
+    background: rgba(26, 32, 44, 0.98);
+    transition: all 0.4s ease-in-out;
+    z-index: 10000;
+    padding-top: 20px;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.5);
+    border-right: 3px solid #5a9fd4;
+}
+
+/* Jab sidebar khulega tab ye class trigger hogi */
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px 25px;
+    color: #cbd5e0;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+    border-left: 4px solid transparent;
+}
+
+.sidebar a:hover {
+    color: #5a9fd4;
+    background: rgba(45, 55, 72, 0.8);
+    padding-left: 35px;
+    border-left: 4px solid #5a9fd4;
+}
+
+/* 4. PROFILE IMAGE FIX (Main Part) */
+.profile-section {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(74, 85, 104, 0.5);
+    margin-bottom: 10px;
+}
+
+.profile-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%; /* Perfect Circle */
+    object-fit: cover; /* Photo stretch nahi hogi */
+    display: block;
+    margin: 0 auto 10px;
+    border: 3px solid #5a9fd4;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* 5. CONTAINERS & CARDS */
+.container {
+
+    padding:40px;
+
+    max-width:1200px;
+
+    width:100%;
+
+    margin:auto;
+
+}
+
+.form-card {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-top: 4px solid #5a9fd4;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+/* 6. MOBILE RESPONSIVENESS */
+/* =========================
+   MOBILE RESPONSIVE FIX
+========================= */
+/* ===============================
+   FINAL UI POLISH RESPONSIVE FIX
+================================ */
+
+
+/* ---------- LOGIN / SIGNUP PAGE ---------- */
+
+.login-container,
+.signup-container,
+.forgot-container{
+
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+
+}
+
+
+.login-card,
+.signup-card{
+
+    width:100%;
+    max-width:420px;
+
+    background:rgba(255,255,255,0.95);
+
+    padding:35px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,0.25);
+
+    backdrop-filter:blur(10px);
+
+}
+
+
+.login-card h2,
+.signup-card h2{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+    font-weight:700;
+
+}
+
+
+
+/* Inputs */
+
+.login-card input,
+.signup-card input,
+.forgot-container input{
+
+
+    height:48px;
+
+    border-radius:10px;
+
+    border:1px solid #ddd;
+
+    padding:0 15px;
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+/* Login Button */
+
+.btn-login,
+.btn-submit,
+.btn-register{
+
+
+    height:48px;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+
+}
+
+
+
+.btn-login:hover,
+.btn-submit:hover,
+.btn-register:hover{
+
+
+    transform:translateY(-2px);
+
+}
+
+
+
+/* ===============================
+      NAVBAR IMPROVEMENT
+================================ */
+
+
+.navbar-custom{
+
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+
+}
+
+
+.navbar-custom a{
+
+
+    white-space:nowrap;
+
+}
+
+
+/* Home page title/content */
+
+.dashboard-content{
+
+
+    width:100%;
+
+}
+
+
+
+/* ===============================
+        MOBILE FINAL FIX
+================================ */
+
+
+@media(max-width:768px){
+
+
+    /* Navbar */
+
+    .navbar-custom{
+
+        position:relative;
+
+        padding:12px 10px;
+
+        gap:6px;
+
+    }
+
+
+
+    .navbar-custom a{
+
+        font-size:12px;
+
+        padding:8px 9px;
+
+        border-radius:6px;
+
+
+    }
+
+
+
+    .dark-mode-toggle{
+
+
+        font-size:16px;
+
+        padding:7px 10px;
+
+    }
+
+
+
+
+    /* Login */
+
+    .login-card,
+    .signup-card{
+
+
+        max-width:100%;
+
+        padding:25px 20px;
+
+
+    }
+
+
+
+    .login-container,
+    .signup-container,
+    .forgot-container{
+
+
+        padding:15px;
+
+
+    }
+
+
+
+
+    /* Banner */
+
+
+    .scrolling-text{
+
+        font-size:14px;
+
+    }
+
+
+
+
+
+    /* Dashboard cards */
+
+
+    .stats-card,
+    .welcome-card,
+    .form-card{
+
+
+        margin-left:0;
+
+        margin-right:0;
+
+    }
+
+
+
+    /* Buttons */
+
+
+    button{
+
+        min-height:45px;
+
+    }
+
+
+
+}
+
+
+
+
+/* Small phones */
+
+
+@media(max-width:400px){
+
+
+
+    .navbar-custom a{
+
+        font-size:11px;
+
+        padding:7px;
+
+    }
+
+
+
+    .login-card,
+    .signup-card{
+
+
+        padding:20px 15px;
+
+    }
+
+
+
+    h1{
+
+        font-size:22px;
+
+    }
+
+html,body{
+
+    width:100%;
+
+    max-width:100%;
+
+    overflow-x:hidden;
+
+}
+
+
+@media(max-width:768px){
+
+    body{
+
+        background-size:auto 100%;
+
+        background-attachment:scroll;
+
+    }
+
+
+    .login-container,
+    .signup-container,
+    .forgot-container{
+
+        min-height:100dvh;
+
+    }
+
+}
+}
