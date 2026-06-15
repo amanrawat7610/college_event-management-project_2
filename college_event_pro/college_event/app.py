@@ -20,7 +20,8 @@ from functools import wraps
 
 import time
 
-
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+from reportlab.lib import colors
 
 import pandas as pd
 
@@ -792,71 +793,84 @@ def download_excel():
 
 
 @login_required
-
-
-
-@app.route('/download_csv')
-
-
-
-def download_csv():
-
-
+@app.route('/download_pdf')
+def download_pdf():
 
     students = Student.query.all()
 
 
+    data = [
 
-    data = [{
+        [
+            "Roll No",
+            "Name",
+            "Branch",
+            "Year",
+            "Phone",
+            "Event"
+        ]
 
-
-
-        'Roll No': s.roll_no,
-
-
-
-        'Name': s.name,
-
-
-
-        'Branch': s.branch,
+    ]
 
 
+    for s in students:
 
-        'Year': s.year,
+        data.append([
 
+            s.roll_no,
+            s.name,
+            s.branch,
+            s.year,
+            s.phone,
+            s.event_name
 
-
-        'Phone': s.phone,
-
-
-
-        'Event': s.event_name
-
-
-
-    } for s in students]
-
-
-
-    df = pd.DataFrame(data)
+        ])
 
 
 
     output = BytesIO()
 
 
+    pdf = SimpleDocTemplate(output)
 
-    df.to_csv(output, index=False)
 
+    table = Table(data)
+
+
+    table.setStyle(
+        TableStyle([
+
+            ('BACKGROUND',(0,0),(-1,0),colors.grey),
+
+            ('TEXTCOLOR',(0,0),(-1,0),colors.white),
+
+            ('GRID',(0,0),(-1,-1),1,colors.black),
+
+            ('ALIGN',(0,0),(-1,-1),'CENTER')
+
+        ])
+
+    )
+
+
+    pdf.build([table])
 
 
     output.seek(0)
 
 
 
-    return send_file(output, mimetype='text/csv', as_attachment=True, download_name='students.csv')
+    return send_file(
 
+        output,
+
+        mimetype='application/pdf',
+
+        as_attachment=True,
+
+        download_name='students.pdf'
+
+    )
 
 
 
