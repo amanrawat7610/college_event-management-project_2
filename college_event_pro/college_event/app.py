@@ -692,6 +692,55 @@ def delete_event(id):
 
 
 
+@app.route('/chatbot', methods=['POST'])
+def chatbot():
+
+    user_message = request.json.get("message").lower()
+
+
+    if "event" in user_message:
+        reply = "You can check all upcoming events from the dashboard."
+
+
+    elif "register" in user_message or "registration" in user_message:
+        reply = "To register for an event, open the Register page and fill in your details."
+
+
+    elif "login" in user_message:
+        reply = "For admin access, please use the Login page."
+
+
+    elif "logout" in user_message or "log out" in user_message:
+        reply = "To logout, click on the Logout button available in the navigation menu."
+
+
+    elif "developer" in user_message or "developers" in user_message or "devloper" in user_message or "creator" in user_message:
+        reply = "This College Event Management System is developed by Aman, Manish, Nagendra and Rahul."
+
+
+    elif "technology" in user_message or "tech stack" in user_message:
+        reply = "This project uses Flask for backend, SQLite as database, SQLAlchemy ORM, HTML, CSS and JavaScript for frontend."
+
+
+    elif "feedback" in user_message:
+        reply = "You can submit your feedback from the Feedback section."
+
+
+    elif "hello" in user_message or "hi" in user_message or "helo" in user_message:
+        reply = "Hello! I am College Event Assistant. How can I help you?"
+
+
+    elif "help" in user_message:
+        reply = "I can help you with event details, registration, logout, developer information and feedback."
+
+
+    else:
+        reply = "Sorry, I didn't understand your query. Please ask about events, registration, logout or developers."
+
+
+    return jsonify({
+        "reply": reply
+    })
 
 
 @login_required
