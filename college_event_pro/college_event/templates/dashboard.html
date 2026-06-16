@@ -392,7 +392,7 @@
 <body>
 
 <div class="banner-announcement">
-    <p class="scrolling-text">Student Registration is valid only until 25/8/2026</p>
+    <p class="scrolling-text">Note : Student Registration is valid only until 25/8/2026.</p>
 </div>
 
 <div id="mySidebar" class="sidebar">
@@ -556,8 +556,97 @@ No events found.
 
 </div>
 
+<div class="chatbot">
+
+<h3>🤖 Event Assistant</h3>
+
+<div id="chatbox"></div>
 
 
+<input id="userInput" placeholder="Ask about events...">
+
+
+<button onclick="sendMessage()">
+Send
+</button>
+
+<button onclick="resetChat()" class="reset-btn">
+Reset Chat
+</button>
+
+
+</div>
+
+
+<script>
+
+function sendMessage(){
+
+let input = document.getElementById("userInput");
+
+let message = input.value;
+
+
+if(message.trim()==""){
+    return;
+}
+
+
+document.getElementById("chatbox").innerHTML +=
+
+"<p><b>You:</b> "+message+"</p>";
+
+
+fetch("/chatbot",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+message:message
+
+})
+
+})
+
+
+.then(response=>response.json())
+
+
+.then(data=>{
+
+
+document.getElementById("chatbox").innerHTML +=
+
+"<p><b>Bot:</b> "+data.reply+"</p>";
+
+
+document.getElementById("chatbox").scrollTop =
+document.getElementById("chatbox").scrollHeight;
+
+
+input.value="";
+
+
+});
+
+
+}
+
+
+
+function resetChat(){
+
+document.getElementById("chatbox").innerHTML = "";
+
+}
+
+
+</script>
 <script>
     function openNav() { document.getElementById("mySidebar").style.width = "280px"; }
     function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
